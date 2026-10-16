@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Christopher Hoskins — Data &amp; BI</title>
-<meta name="description" content="Christopher Hoskins builds data pipelines, models, and reporting at Wheeler Machinery. Portfolio and contact.">
+<meta name="description" content="Christopher Hoskins builds data pipelines, models, and reporting at Wheeler Machinery. Projects, skills, resume, and contact.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -19,123 +19,122 @@
     --accent: #2b5b86;
     --accent-ink: #1e4466;
     --code-raw: #8a4b2a;
+    --ok: #2f7d4f;
     --font: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
-    --measure: 40rem;
+    --measure: 42rem;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #161b20;
-      --bg-raised: #1f262d;
-      --ink: #e6eaee;
-      --ink-soft: #9aa6b2;
-      --rule: #333c45;
-      --accent: #8db7e2;
-      --accent-ink: #b8d3ee;
-      --code-raw: #d9a47c;
+      --bg: #161b20; --bg-raised: #1f262d; --ink: #e6eaee; --ink-soft: #9aa6b2;
+      --rule: #333c45; --accent: #8db7e2; --accent-ink: #b8d3ee; --code-raw: #d9a47c; --ok: #7fc99a;
     }
   }
-
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font);
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+  html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
   a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
   a:hover { color: var(--accent-ink); }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
   .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 1.25rem; }
 
-  /* Header */
-  header { padding: 2.5rem 0 1.5rem; }
-  header nav { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.95rem; }
-  header nav a { color: var(--ink-soft); text-decoration: none; }
-  header nav a:hover { color: var(--ink); }
+  /* Sticky nav */
+  .nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 3.25rem; }
+  .nav .name { font-weight: 600; text-decoration: none; color: var(--ink); }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.1rem; font-size: 0.93rem; overflow-x: auto; }
+  .nav ul a { color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
+  .nav ul a:hover, .nav ul a[aria-current="true"] { color: var(--ink); }
 
   /* Hero */
-  .hero { padding: 2rem 0 3rem; border-bottom: 1px solid var(--rule); }
-  .hero h1 {
-    font-size: clamp(2rem, 5vw, 2.75rem);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.15;
-    margin: 0 0 0.75rem;
-  }
-  .hero p.lede { font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 2rem; max-width: 34rem; }
-
-  .mapping {
-    font-family: var(--mono);
-    font-size: 0.95rem;
-    line-height: 1.9;
-    background: var(--bg-raised);
-    border-left: 3px solid var(--accent);
-    padding: 1rem 1.25rem;
-    overflow-x: auto;
-  }
+  .hero { padding: 3rem 0 2.5rem; border-bottom: 1px solid var(--rule); }
+  .hero h1 { font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; margin: 0 0 0.75rem; }
+  .hero .lede { font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 1.75rem; max-width: 34rem; }
+  .mapping { font-family: var(--mono); font-size: 0.95rem; line-height: 1.9; background: var(--bg-raised); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; overflow-x: auto; }
   .mapping .row { display: grid; grid-template-columns: 7ch 3ch 1fr; gap: 0.5rem; white-space: nowrap; }
   .mapping .raw { color: var(--code-raw); }
   .mapping .arrow { color: var(--ink-soft); }
-  .mapping .clean { color: var(--ink); }
   .mapping .row.pending .clean { opacity: 0.25; }
-  .mapping .cap { color: var(--ink-soft); font-family: var(--font); font-size: 0.875rem; margin-top: 0.75rem; }
-  @media (prefers-reduced-motion: no-preference) {
-    .mapping .row .clean { transition: opacity 400ms ease; }
-  }
+  .mapping .cap { color: var(--ink-soft); font-family: var(--font); font-size: 0.875rem; margin: 0.75rem 0 0; }
+  @media (prefers-reduced-motion: no-preference) { .mapping .clean { transition: opacity 400ms ease; } }
 
-  /* Sections */
   section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
   section:last-of-type { border-bottom: 0; }
   h2 { font-size: 1.35rem; font-weight: 600; margin: 0 0 1.5rem; letter-spacing: -0.005em; }
   h3 { font-size: 1.1rem; font-weight: 600; margin: 0 0 0.35rem; }
   p { margin: 0 0 1rem; }
+  .soft { color: var(--ink-soft); }
 
-  /* Work entries */
-  .work { display: grid; gap: 2.25rem; }
-  .work article p { color: var(--ink); }
-  .work .meta { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 0.5rem; }
-  .work .tools { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+  /* Projects: expandable */
+  .projects { display: grid; gap: 0.75rem; }
+  details.project { border: 1px solid var(--rule); border-radius: 6px; background: var(--bg-raised); }
+  details.project summary { list-style: none; cursor: pointer; padding: 1rem 1.25rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; }
+  details.project summary::-webkit-details-marker { display: none; }
+  details.project summary h3 { margin: 0; }
+  details.project summary .one-line { color: var(--ink-soft); font-size: 0.95rem; margin: 0.2rem 0 0; }
+  details.project summary .toggle { color: var(--ink-soft); font-size: 0.9rem; padding-top: 0.2rem; }
+  details.project[open] summary .toggle::before { content: "Hide"; }
+  details.project:not([open]) summary .toggle::before { content: "Read"; }
+  details.project .body { padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--rule); }
+  details.project .body dl { margin: 1rem 0 0; }
+  details.project .body dt { font-weight: 600; margin-top: 0.75rem; }
+  details.project .body dd { margin: 0.15rem 0 0; }
+  details.project .tools { font-family: var(--mono); font-size: 0.85rem; color: var(--ink-soft); margin-top: 1rem; }
 
-  /* Experience */
-  .roles { display: grid; gap: 1.75rem; }
-  .roles .when { color: var(--ink-soft); font-size: 0.95rem; }
-  .roles ul { margin: 0.5rem 0 0; padding-left: 1.1rem; }
-  .roles li { margin-bottom: 0.4rem; }
+  /* Working on */
+  .wip { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+  .wip li { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px dashed var(--rule); }
+  .wip li:last-child { border-bottom: 0; }
+  .wip .state { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft); }
+  .wip .state[data-state="in progress"] { color: var(--accent); }
+  .wip .state[data-state="shipped"] { color: var(--ok); }
+  .wip .state::before { content: attr(data-state); }
+  @media (max-width: 480px) { .wip li { grid-template-columns: 1fr; gap: 0.2rem; } }
 
-  /* Skills */
-  .skills { display: grid; grid-template-columns: 1fr; gap: 0.75rem 2rem; }
-  @media (min-width: 540px) { .skills { grid-template-columns: 1fr 1fr; } }
-  .skills dt { font-weight: 600; margin-bottom: 0.15rem; }
-  .skills dd { margin: 0 0 0.75rem; color: var(--ink-soft); }
+  /* Skills: tabs */
+  .tabs { display: flex; gap: 0.25rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .tabs button { font: inherit; font-size: 0.93rem; padding: 0.4rem 0.85rem; border: 1px solid var(--rule); background: transparent; color: var(--ink-soft); border-radius: 999px; cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .panel { display: none; }
+  .panel[data-active] { display: block; }
+  .panel ul { margin: 0; padding-left: 1.1rem; columns: 2; column-gap: 2rem; }
+  .panel li { break-inside: avoid; margin-bottom: 0.35rem; }
+  @media (max-width: 480px) { .panel ul { columns: 1; } }
+  .certs { margin-top: 2rem; }
 
-  /* Contact */
+  /* Resume */
+  .resume-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .btn { display: inline-block; font: inherit; font-size: 0.95rem; font-weight: 500; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; border: 1px solid var(--accent); color: var(--accent); background: transparent; }
+  .btn.primary { background: var(--accent); color: var(--bg); }
+  .btn:hover { color: var(--accent-ink); border-color: var(--accent-ink); }
+  .btn.primary:hover { color: var(--bg); background: var(--accent-ink); }
+  .resume-frame { width: 100%; height: 75vh; min-height: 520px; border: 1px solid var(--rule); border-radius: 6px; background: #fff; }
+
   .contact ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
-
   footer { padding: 2.5rem 0 3rem; color: var(--ink-soft); font-size: 0.9rem; }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <nav aria-label="Sections">
-      <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="name" href="#top">Christopher Hoskins</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#working-on">Working on</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
 
   <div class="hero">
-    <h1>Christopher Hoskins</h1>
-    <p class="lede">I turn raw dealer and operations data into models, pipelines, and reports people actually use. BI Developer at Wheeler Machinery, working toward data engineering.</p>
-
+    <h1>I turn raw dealer data into things people can use.</h1>
+    <p class="lede">BI Developer at Wheeler Machinery in Utah, working toward data engineering. Pipelines, models, and dashboards built on SQL, Power BI, and Power Automate.</p>
     <div class="mapping" id="mapping" aria-label="Example of raw source fields mapped to readable names">
       <div class="row pending"><span class="raw">CUNO</span><span class="arrow">→</span><span class="clean">customer_number</span></div>
       <div class="row pending"><span class="raw">IVDAT8</span><span class="arrow">→</span><span class="clean">invoice_date</span></div>
@@ -146,86 +145,154 @@
     </div>
   </div>
 
-  <section id="work">
-    <h2>Selected work</h2>
-    <div class="work">
+  <section id="about">
+    <h2>About</h2>
+    <p>I've spent three and a half years at Wheeler Machinery, the Caterpillar dealer for Utah. I started as a freight logistics analyst, building rate models and claims processes in spreadsheets, and moved into Business Intelligence in 2026 when it became clear the interesting problems were upstream: the data itself, how it's named, modeled, and moved.</p>
+    <p>Most of what I do now sits between raw dealer-system tables and the people who need answers from them. I like the unglamorous parts: a naming standard that holds up across eleven tables, a pipeline that quietly removes a day of manual work every month, a template that turns a three-hour request into a ten-minute one.</p>
+    <p>Outside work I'm into computers generally and retro tech specifically, and I spend a lot of my free time learning new tools and writing code for the fun of it. I studied business management with an operations emphasis at Utah State, which is probably why I still think about data problems as process problems first.</p>
+  </section>
 
-      <article>
-        <h3>Silver-layer naming and mapping standard</h3>
-        <p class="meta">Wheeler Machinery · 2026</p>
-        <p>Raw dealer-system tables arrive with six-character field codes that only a handful of people can read. I built a cross-table mapping matrix for 11 equipment tables that translates every source code into a business-readable name, tracks primary keys, and flags fields that map to different targets across tables. Downstream models and reports now use one consistent vocabulary instead of decoding columns each time.</p>
-        <p class="tools">SQL · data modeling · medallion architecture</p>
-      </article>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
 
-      <article>
-        <h3>Dealer notification alert pipeline</h3>
-        <p class="meta">Wheeler Machinery · 2026</p>
-        <p>Alerts used to be handled by hand: read, copy, forward, chase. I built a Power Automate and SharePoint pipeline that ingests each alert, syncs it into a validated tracker, routes a link to the right contact, and captures their response back into the record. It removed roughly 24 hours of manual work a month and gave the team a single place to see what's open.</p>
-        <p class="tools">Power Automate · SharePoint · workflow design</p>
-      </article>
+      <details class="project" open>
+        <summary>
+          <div>
+            <h3>Dealer Notification Alert pipeline</h3>
+            <p class="one-line">Replaced a manual alert-handling process with an automated ingest, track, route, and respond loop.</p>
+          </div>
+          <span class="toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="body">
+          <dl>
+            <dt>The problem</dt>
+            <dd>Dealer notification alerts came in as a stream that someone had to read, copy into a tracker, forward to the right contact, and then chase for a response. It consumed about a day of someone's month and nothing was in one place.</dd>
+            <dt>What I built</dt>
+            <dd>A Power Automate flow that ingests each alert, writes it to a SharePoint list with validated columns, emails the responsible contact a link to their row, and captures their response back into the record. The list is the single source of truth, and it's editable by the people who own the work.</dd>
+            <dt>Result</dt>
+            <dd>Roughly 24 hours of manual work removed per month, a complete audit trail of who was notified and when, and a tracker people actually keep current because it's the thing that emails them.</dd>
+          </dl>
+          <p class="tools">Power Automate · SharePoint · workflow expressions · conditional routing</p>
+        </div>
+      </details>
 
-      <article>
-        <h3>Departmental dashboards</h3>
-        <p class="meta">Wheeler Machinery · 2026</p>
-        <p>Six dashboards across finance, parts, and safety, built end to end: SQL extraction, cleaning and modeling, then a reporting layer designed around clear hierarchy so people can answer their own questions. Independent report usage went up and ad-hoc requests came down.</p>
-        <p class="tools">SQL · Power BI · DAX · UI/UX</p>
-      </article>
+      <details class="project">
+        <summary>
+          <div>
+            <h3>Silver-layer naming and mapping standard</h3>
+            <p class="one-line">A cross-table standard that makes raw dealer-system data readable and consistent for everything downstream.</p>
+          </div>
+          <span class="toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="body">
+          <dl>
+            <dt>The problem</dt>
+            <dd>Raw equipment tables arrive with six-character field codes like <code>CUNO</code> and <code>IVDAT8</code>. The same code can mean slightly different things in different tables, keys aren't obvious, and every report that touched them re-did the decoding.</dd>
+            <dt>What I built</dt>
+            <dd>A mapping matrix across 11 equipment tables, source code on one axis and table on the other, with the business-readable target name in each cell. It tracks primary keys, splits date fields into usable parts, and flags any source field that maps to a different target in different tables so the conflict gets resolved once instead of rediscovered.</dd>
+            <dt>Result</dt>
+            <dd>One vocabulary for the silver layer. Models and dashboards now read the same column names, and onboarding someone to the data means handing them a matrix instead of a tribal-knowledge conversation.</dd>
+          </dl>
+          <p class="tools">SQL · data modeling · medallion architecture · data dictionary</p>
+        </div>
+      </details>
 
-      <article>
-        <h3>Rapid-turnaround data products</h3>
-        <p class="meta">Wheeler Machinery · 2026</p>
-        <p>Twenty-five-plus urgent analyses for key customer accounts, covering parts demand, spend, availability, warranty, and shop-line data, often from files in the tens of megabytes. The recurring ones became versioned, reusable templates so the next request takes minutes rather than a rebuild.</p>
-        <p class="tools">Excel · Power Pivot · data cleaning</p>
-      </article>
-
-      <article>
-        <h3>Freight rate model</h3>
-        <p class="meta">Wheeler Machinery · 2023–2026</p>
-        <p>Consolidated inbound and outbound shipment data across multiple carriers into a rate model refreshed quarterly. It replaced the previous rate structure and saved about $2.9M in freight expenses. A companion damage-claims process recovered another ~$100K that had been written off.</p>
-        <p class="tools">Excel · data modeling · process design</p>
-      </article>
+      <details class="project">
+        <summary>
+          <div>
+            <h3>Credit dashboard</h3>
+            <p class="one-line">A Power BI dashboard the finance team uses as a primary decision-making tool.</p>
+          </div>
+          <span class="toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="body">
+          <dl>
+            <dt>The problem</dt>
+            <dd>Credit decisions were being made from exported spreadsheets that were out of date by the time anyone opened them, with no shared view of exposure or history.</dd>
+            <dt>What I built</dt>
+            <dd>An end-to-end solution: SQL extraction from the source system, a cleaned and modeled dataset, and a Power BI reporting layer designed around a clear hierarchy so the most important numbers are the first thing on screen and the detail is one click away.</dd>
+            <dt>Result</dt>
+            <dd>The dashboard replaced the spreadsheet exports as the finance team's working view, and the questions that used to come to me as ad-hoc requests are now answered by the report itself.</dd>
+          </dl>
+          <p class="tools">SQL · Power BI · DAX · dashboard UI/UX</p>
+        </div>
+      </details>
 
     </div>
   </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="roles">
-      <div>
-        <h3>Business Intelligence Developer, Wheeler Machinery Company</h3>
-        <div class="when">West Valley City, UT · January 2026 – present</div>
-        <ul>
-          <li>Standardized raw dealer-system data for the enterprise warehouse through a silver-layer naming and mapping standard</li>
-          <li>Built end-to-end data solutions from SQL extraction through modeling and delivery</li>
-          <li>Automated alert handling with a Power Automate and SharePoint pipeline</li>
-          <li>Cut development time about 50% by integrating AI tools into build and QA</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Freight Logistics Analyst, Wheeler Machinery Company</h3>
-        <div class="when">May 2023 – January 2026</div>
-        <ul>
-          <li>Saved ~$2.9M in freight expenses with multi-carrier rate models</li>
-          <li>Recovered ~$100K through a new damage-claims process</li>
-          <li>Cut invoice processing time ~40% and increased line-item granularity 80%</li>
-          <li>Designed a warehouse employee-performance tracking system</li>
-        </ul>
-      </div>
-      <div>
-        <h3>B.S. Business Management, Utah State University</h3>
-        <div class="when">Huntsman School of Business · Operations &amp; Supply Chain emphasis, Economics minor · May 2025</div>
-      </div>
-    </div>
+  <section id="working-on">
+    <h2>Working on</h2>
+    <ul class="wip">
+      <li><span class="state" data-state="in progress"></span><span>Data engineering: orchestration, incremental loads, and data quality checks, picking up where my silver-layer work leaves off.</span></li>
+      <li><span class="state" data-state="in progress"></span><span>Git: moving my own work into version control and getting comfortable with branches, history, and pull requests.</span></li>
+      <li><span class="state" data-state="in progress"></span><span>Linux: command line, shell scripting, and running things on a machine that isn't Windows.</span></li>
+      <li><span class="state" data-state="in progress"></span><span>R and data science: statistics and modeling to complement the SQL and BI side.</span></li>
+      <li><span class="state" data-state="shipped"></span><span>This site, built by hand in HTML and CSS and hosted on GitHub Pages.</span></li>
+    </ul>
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
-    <dl class="skills">
-      <div><dt>Data and modeling</dt><dd>SQL, data modeling and ETL, Power Automate, SharePoint</dd></div>
-      <div><dt>Analytics and BI</dt><dd>Power BI, DAX, Power Pivot, Excel, dashboard UI/UX</dd></div>
-      <div><dt>Languages</dt><dd>Python and C++ (fundamentals)</dd></div>
-      <div><dt>Ways of working</dt><dd>Lean / continuous improvement / 5S, AI-assisted development</dd></div>
-    </dl>
+    <div class="tabs" role="tablist" aria-label="Skill groups">
+      <button role="tab" aria-selected="true" aria-controls="p-data" id="t-data">Data engineering</button>
+      <button role="tab" aria-selected="false" aria-controls="p-bi" id="t-bi">Analytics &amp; BI</button>
+      <button role="tab" aria-selected="false" aria-controls="p-lang" id="t-lang">Languages &amp; tools</button>
+      <button role="tab" aria-selected="false" aria-controls="p-ways" id="t-ways">Ways of working</button>
+    </div>
+    <div class="panel" id="p-data" role="tabpanel" aria-labelledby="t-data" data-active>
+      <ul>
+        <li>SQL</li>
+        <li>Data modeling and ETL</li>
+        <li>Medallion / layered architecture</li>
+        <li>Schema mapping and data dictionaries</li>
+        <li>Power Automate pipelines</li>
+        <li>SharePoint as a system of record</li>
+      </ul>
+    </div>
+    <div class="panel" id="p-bi" role="tabpanel" aria-labelledby="t-bi">
+      <ul>
+        <li>Power BI</li>
+        <li>DAX</li>
+        <li>Excel and Power Pivot</li>
+        <li>Dashboard UI/UX</li>
+        <li>KPI design and usage reporting</li>
+        <li>Requirements gathering</li>
+      </ul>
+    </div>
+    <div class="panel" id="p-lang" role="tabpanel" aria-labelledby="t-lang">
+      <ul>
+        <li>Python (fundamentals)</li>
+        <li>C++ (fundamentals)</li>
+        <li>R (learning)</li>
+        <li>Git (learning)</li>
+        <li>Linux (learning)</li>
+        <li>AI-assisted development</li>
+      </ul>
+    </div>
+    <div class="panel" id="p-ways" role="tabpanel" aria-labelledby="t-ways">
+      <ul>
+        <li>Lean / continuous improvement</li>
+        <li>5S</li>
+        <li>Process design</li>
+        <li>Cross-functional partnership (finance, parts, safety, operations)</li>
+      </ul>
+    </div>
+    <div class="certs">
+      <h3>Certifications</h3>
+      <p class="soft">None current. Next up is a Microsoft data certification to match the work above; this section will update when it's earned.</p>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <div class="resume-actions">
+      <a class="btn primary" href="Christopher_Hoskins_Resume.pdf" download>Download PDF</a>
+      <a class="btn" href="Christopher_Hoskins_Resume.pdf" target="_blank" rel="noopener">Open in new tab</a>
+    </div>
+    <iframe class="resume-frame" src="Christopher_Hoskins_Resume.pdf#view=FitH" title="Christopher Hoskins resume"></iframe>
+    <p class="soft" style="margin-top:0.75rem;font-size:0.9rem">If the preview doesn't load on your device, use the download link.</p>
   </section>
 
   <section id="contact" class="contact">
@@ -233,23 +300,50 @@
     <ul>
       <li><a href="mailto:christopherwhoskins@gmail.com">christopherwhoskins@gmail.com</a></li>
       <li><a href="https://linkedin.com/in/christopher-william-hoskins">linkedin.com/in/christopher-william-hoskins</a></li>
-      <li><a href="https://github.com/YOUR-USERNAME">github.com/YOUR-USERNAME</a></li>
+      <li><a href="https://github.com/chrhos">github.com/chrhos</a></li>
     </ul>
   </section>
 
   <footer>Salt Lake City area · Updated October 2026</footer>
-
 </div>
 
 <script>
-  // Reveal the mapped names one at a time on load. No-op if the user prefers reduced motion.
+  // Hero mapping reveal
   (function () {
     var rows = document.querySelectorAll('#mapping .row');
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { rows.forEach(function (r) { r.classList.remove('pending'); }); return; }
-    rows.forEach(function (r, i) {
-      setTimeout(function () { r.classList.remove('pending'); }, 350 + i * 220);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      rows.forEach(function (r) { r.classList.remove('pending'); }); return;
+    }
+    rows.forEach(function (r, i) { setTimeout(function () { r.classList.remove('pending'); }, 350 + i * 220); });
+  })();
+
+  // Skills tabs
+  (function () {
+    var tabs = document.querySelectorAll('[role="tab"]');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) { t.setAttribute('aria-selected', 'false'); });
+        document.querySelectorAll('.panel').forEach(function (p) { p.removeAttribute('data-active'); });
+        tab.setAttribute('aria-selected', 'true');
+        document.getElementById(tab.getAttribute('aria-controls')).setAttribute('data-active', '');
+      });
     });
+  })();
+
+  // Highlight current section in nav
+  (function () {
+    var links = document.querySelectorAll('.nav ul a');
+    var sections = Array.prototype.map.call(links, function (a) { return document.querySelector(a.getAttribute('href')); });
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (a) { a.removeAttribute('aria-current'); });
+          links[sections.indexOf(e.target)].setAttribute('aria-current', 'true');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(function (s) { if (s) io.observe(s); });
   })();
 </script>
 </body>

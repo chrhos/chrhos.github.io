@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christopher Hoskins — Data &amp; BI</title>
+<meta name="description" content="Christopher Hoskins builds data pipelines, models, and reporting at Wheeler Machinery. Portfolio and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f4f6f3;
+    --bg-raised: #e9ede7;
+    --ink: #1b232c;
+    --ink-soft: #55606c;
+    --rule: #cfd5cd;
+    --accent: #2b5b86;
+    --accent-ink: #1e4466;
+    --code-raw: #8a4b2a;
+    --font: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --measure: 40rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161b20;
+      --bg-raised: #1f262d;
+      --ink: #e6eaee;
+      --ink-soft: #9aa6b2;
+      --rule: #333c45;
+      --accent: #8db7e2;
+      --accent-ink: #b8d3ee;
+      --code-raw: #d9a47c;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--accent-ink); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 1.25rem; }
+
+  /* Header */
+  header { padding: 2.5rem 0 1.5rem; }
+  header nav { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.95rem; }
+  header nav a { color: var(--ink-soft); text-decoration: none; }
+  header nav a:hover { color: var(--ink); }
+
+  /* Hero */
+  .hero { padding: 2rem 0 3rem; border-bottom: 1px solid var(--rule); }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin: 0 0 0.75rem;
+  }
+  .hero p.lede { font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 2rem; max-width: 34rem; }
+
+  .mapping {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    background: var(--bg-raised);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+  }
+  .mapping .row { display: grid; grid-template-columns: 7ch 3ch 1fr; gap: 0.5rem; white-space: nowrap; }
+  .mapping .raw { color: var(--code-raw); }
+  .mapping .arrow { color: var(--ink-soft); }
+  .mapping .clean { color: var(--ink); }
+  .mapping .row.pending .clean { opacity: 0.25; }
+  .mapping .cap { color: var(--ink-soft); font-family: var(--font); font-size: 0.875rem; margin-top: 0.75rem; }
+  @media (prefers-reduced-motion: no-preference) {
+    .mapping .row .clean { transition: opacity 400ms ease; }
+  }
+
+  /* Sections */
+  section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: 0; }
+  h2 { font-size: 1.35rem; font-weight: 600; margin: 0 0 1.5rem; letter-spacing: -0.005em; }
+  h3 { font-size: 1.1rem; font-weight: 600; margin: 0 0 0.35rem; }
+  p { margin: 0 0 1rem; }
+
+  /* Work entries */
+  .work { display: grid; gap: 2.25rem; }
+  .work article p { color: var(--ink); }
+  .work .meta { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 0.5rem; }
+  .work .tools { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+
+  /* Experience */
+  .roles { display: grid; gap: 1.75rem; }
+  .roles .when { color: var(--ink-soft); font-size: 0.95rem; }
+  .roles ul { margin: 0.5rem 0 0; padding-left: 1.1rem; }
+  .roles li { margin-bottom: 0.4rem; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: 1fr; gap: 0.75rem 2rem; }
+  @media (min-width: 540px) { .skills { grid-template-columns: 1fr 1fr; } }
+  .skills dt { font-weight: 600; margin-bottom: 0.15rem; }
+  .skills dd { margin: 0 0 0.75rem; color: var(--ink-soft); }
+
+  /* Contact */
+  .contact ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+
+  footer { padding: 2.5rem 0 3rem; color: var(--ink-soft); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Christopher Hoskins</h1>
+    <p class="lede">I turn raw dealer and operations data into models, pipelines, and reports people actually use. BI Developer at Wheeler Machinery, working toward data engineering.</p>
+
+    <div class="mapping" id="mapping" aria-label="Example of raw source fields mapped to readable names">
+      <div class="row pending"><span class="raw">CUNO</span><span class="arrow">→</span><span class="clean">customer_number</span></div>
+      <div class="row pending"><span class="raw">IVDAT8</span><span class="arrow">→</span><span class="clean">invoice_date</span></div>
+      <div class="row pending"><span class="raw">PONO</span><span class="arrow">→</span><span class="clean">purchase_order_number</span></div>
+      <div class="row pending"><span class="raw">STN1</span><span class="arrow">→</span><span class="clean">store_number</span></div>
+      <div class="row pending"><span class="raw">BKVAL1</span><span class="arrow">→</span><span class="clean">book_value</span></div>
+      <p class="cap">From a silver-layer naming standard I built for 11 raw equipment tables.</p>
+    </div>
+  </div>
+
+  <section id="work">
+    <h2>Selected work</h2>
+    <div class="work">
+
+      <article>
+        <h3>Silver-layer naming and mapping standard</h3>
+        <p class="meta">Wheeler Machinery · 2026</p>
+        <p>Raw dealer-system tables arrive with six-character field codes that only a handful of people can read. I built a cross-table mapping matrix for 11 equipment tables that translates every source code into a business-readable name, tracks primary keys, and flags fields that map to different targets across tables. Downstream models and reports now use one consistent vocabulary instead of decoding columns each time.</p>
+        <p class="tools">SQL · data modeling · medallion architecture</p>
+      </article>
+
+      <article>
+        <h3>Dealer notification alert pipeline</h3>
+        <p class="meta">Wheeler Machinery · 2026</p>
+        <p>Alerts used to be handled by hand: read, copy, forward, chase. I built a Power Automate and SharePoint pipeline that ingests each alert, syncs it into a validated tracker, routes a link to the right contact, and captures their response back into the record. It removed roughly 24 hours of manual work a month and gave the team a single place to see what's open.</p>
+        <p class="tools">Power Automate · SharePoint · workflow design</p>
+      </article>
+
+      <article>
+        <h3>Departmental dashboards</h3>
+        <p class="meta">Wheeler Machinery · 2026</p>
+        <p>Six dashboards across finance, parts, and safety, built end to end: SQL extraction, cleaning and modeling, then a reporting layer designed around clear hierarchy so people can answer their own questions. Independent report usage went up and ad-hoc requests came down.</p>
+        <p class="tools">SQL · Power BI · DAX · UI/UX</p>
+      </article>
+
+      <article>
+        <h3>Rapid-turnaround data products</h3>
+        <p class="meta">Wheeler Machinery · 2026</p>
+        <p>Twenty-five-plus urgent analyses for key customer accounts, covering parts demand, spend, availability, warranty, and shop-line data, often from files in the tens of megabytes. The recurring ones became versioned, reusable templates so the next request takes minutes rather than a rebuild.</p>
+        <p class="tools">Excel · Power Pivot · data cleaning</p>
+      </article>
+
+      <article>
+        <h3>Freight rate model</h3>
+        <p class="meta">Wheeler Machinery · 2023–2026</p>
+        <p>Consolidated inbound and outbound shipment data across multiple carriers into a rate model refreshed quarterly. It replaced the previous rate structure and saved about $2.9M in freight expenses. A companion damage-claims process recovered another ~$100K that had been written off.</p>
+        <p class="tools">Excel · data modeling · process design</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="roles">
+      <div>
+        <h3>Business Intelligence Developer, Wheeler Machinery Company</h3>
+        <div class="when">West Valley City, UT · January 2026 – present</div>
+        <ul>
+          <li>Standardized raw dealer-system data for the enterprise warehouse through a silver-layer naming and mapping standard</li>
+          <li>Built end-to-end data solutions from SQL extraction through modeling and delivery</li>
+          <li>Automated alert handling with a Power Automate and SharePoint pipeline</li>
+          <li>Cut development time about 50% by integrating AI tools into build and QA</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Freight Logistics Analyst, Wheeler Machinery Company</h3>
+        <div class="when">May 2023 – January 2026</div>
+        <ul>
+          <li>Saved ~$2.9M in freight expenses with multi-carrier rate models</li>
+          <li>Recovered ~$100K through a new damage-claims process</li>
+          <li>Cut invoice processing time ~40% and increased line-item granularity 80%</li>
+          <li>Designed a warehouse employee-performance tracking system</li>
+        </ul>
+      </div>
+      <div>
+        <h3>B.S. Business Management, Utah State University</h3>
+        <div class="when">Huntsman School of Business · Operations &amp; Supply Chain emphasis, Economics minor · May 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <div><dt>Data and modeling</dt><dd>SQL, data modeling and ETL, Power Automate, SharePoint</dd></div>
+      <div><dt>Analytics and BI</dt><dd>Power BI, DAX, Power Pivot, Excel, dashboard UI/UX</dd></div>
+      <div><dt>Languages</dt><dd>Python and C++ (fundamentals)</dd></div>
+      <div><dt>Ways of working</dt><dd>Lean / continuous improvement / 5S, AI-assisted development</dd></div>
+    </dl>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <ul>
+      <li><a href="mailto:christopherwhoskins@gmail.com">christopherwhoskins@gmail.com</a></li>
+      <li><a href="https://linkedin.com/in/christopher-william-hoskins">linkedin.com/in/christopher-william-hoskins</a></li>
+      <li><a href="https://github.com/YOUR-USERNAME">github.com/YOUR-USERNAME</a></li>
+    </ul>
+  </section>
+
+  <footer>Salt Lake City area · Updated October 2026</footer>
+
+</div>
+
+<script>
+  // Reveal the mapped names one at a time on load. No-op if the user prefers reduced motion.
+  (function () {
+    var rows = document.querySelectorAll('#mapping .row');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { rows.forEach(function (r) { r.classList.remove('pending'); }); return; }
+    rows.forEach(function (r, i) {
+      setTimeout(function () { r.classList.remove('pending'); }, 350 + i * 220);
+    });
+  })();
+</script>
+</body>
+</html>
